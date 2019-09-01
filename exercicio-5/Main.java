@@ -26,6 +26,7 @@ public class Main {
         for (int i = mid; i < n; i++) {
             r[i - mid] = a[i];
         }
+        //Cria os runnables da chamada recursiva
         Runnable r1 = () -> {
             try {
                 mergeSort(l, mid);
@@ -40,6 +41,7 @@ public class Main {
                 e.printStackTrace();
             }
         };
+        //cria as threas e executa
         Thread t1 = new Thread(r1);
         t1.start();
         Thread t2 = new Thread(r2);
@@ -47,6 +49,8 @@ public class Main {
 
         t1.join();
         t2.join();
+
+        //da merge nos vetores resutantes
         merge(a, l, r, mid, n - mid);
     }
 
